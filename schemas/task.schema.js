@@ -1,8 +1,8 @@
-import joi from 'joi'
+const joi = require('joi')
 
 const id = joi.number().positive()
 const title = joi.string().min(3)
-const description = joi.number()
+const description = joi.string().min(3)
 const status = joi.string() 
 
 
@@ -20,4 +20,4 @@ const updateTaskSchema = joi.object({
     status: status.required()
 })
 
-export {createTaskSchema,getTaskSchema,updateTaskSchema}
+module.exports = {createTaskSchema,getTaskSchema,updateTaskSchema}

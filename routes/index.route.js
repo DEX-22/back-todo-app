@@ -1,11 +1,11 @@
-import express from 'express'
-import taskRoutes from './task.route.js'
+const express = require('express')
+const taskRoutes = require('./task.route.js')
 
 const router = express.Router()
 
   
 
-export default function(app){
+module.exports = function(app){
     app.get("/",(req,res)=>{res.send("WELCOME")})
 
     router.use("/tasks",taskRoutes)

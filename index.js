@@ -1,7 +1,7 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import buildRoutes from './routes/index.route.js'
-import buildMiddlewares from './middlewares/index.middleware.js'
+const express = require('express')
+const dotenv = require('dotenv')
+const buildRoutes = require('./routes/index.route.js')
+const {buildMiddlewares} = require('./middlewares/index.middleware.js')
 dotenv.config()
 const PORT = process.env.PORT ?? 3000
 const app = express()

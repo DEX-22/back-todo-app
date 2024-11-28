@@ -1,7 +1,8 @@
-import boom from '@hapi/boom'
+const boom = require('@hapi/boom')
+const { ValidationError } = require('sequelize')
 
-export const properties = {body:'body',params:'params',query:'query'}
-export function validateRequest(schema,property){
+
+function validateRequest(schema,property){
 
     return (req,res,next)=>{
         const data = req[property]
@@ -16,7 +17,7 @@ export function validateRequest(schema,property){
 
 }
 
-function catchError(){
+function catchError(err,req,res,next){
     if(err){
         console.log(err)
         next(err)
@@ -42,9 +43,35 @@ function errorHandler({message,stack},req,res,next){
 
 }
 
-export default function(app){
-    app.use(catchError) 
+function ormErrorHandler(err,req,res,next){
+
+    if(err instanceof ValidationError){
+
+        res.status(409).json({
+            statusCode: 409,
+            message: err.name,
+            errors: err.errors
+        })
+
+    }
+
+    next(err)
+
+}
+
+
+module.exports = {
+    properties:{
+        body:'body',
+        params:'params',
+        query:'query'
+    },
+    validateRequest,
+  
+    buildMiddlewares: function(app){
+    app.use(catchError)
+    app.use(ormErrorHandler)
     app.use(boomErrorHandler)
     app.use(errorHandler)
     
-}
+}}
