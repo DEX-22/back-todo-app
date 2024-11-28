@@ -1,13 +1,14 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import buildRoutes from './routes/index.route.js'
 dotenv.config()
 
-const PORT = process.env.PORT ?? 3000
 const app = express()
 
 
-app.get("/",(req,res)=>{res.send("WELCOME")})
+const PORT = process.env.PORT ?? 3000
 
+buildRoutes(app)
 
 
 app.listen(PORT,()=>{
