@@ -42,22 +42,22 @@ router.post("/",
 //             next(error)
 //         }
 //     })
-router.patch("/:id",
-    validateRequest(getTaskSchema, properties.params),
-    validateRequest(updateTaskSchema, properties.body),
-    async (req, res, next) => {
-        try {
-            const id = req.params.id
-            const changed = req.body
+// router.patch("/:id",
+//     validateRequest(getTaskSchema, properties.params),
+//     validateRequest(updateTaskSchema, properties.body),
+//     async (req, res, next) => {
+//         try {
+//             const id = req.params.id
+//             const changed = req.body
 
-            const updated = await service.update(id, changed)
+//             const updated = await service.update(id, changed)
 
-            res.json(updated)
+//             res.json(updated)
 
-        } catch (error) {
-            next(error)
-        }
-    })
+//         } catch (error) {
+//             next(error)
+//         }
+//     })
 router.delete("/:id",
     validateRequest(getTaskSchema, properties.params),
     async (req, res, next) => {
