@@ -15,7 +15,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
+# Inicializa la estructura de Sequelize si es necesario
+      - name: Initialize Sequelize structure
+        run: npx sequelize-cli init
+        
       - name: Run migrations
         env:
           NODE_ENV: production
