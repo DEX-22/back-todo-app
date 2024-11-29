@@ -6,7 +6,7 @@ console.log(config.jwtSecret)
 
 const options = {
     jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: config.jwtSecret
+    secretOrKey: config.jwtSecret || "test"
 }
 
 
