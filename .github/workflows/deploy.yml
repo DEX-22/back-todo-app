@@ -19,6 +19,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --production
 
+      - name: exists secret
+        run: echo $hola
+        env: hola: ${{secrets.JWT_SECRET}}
+
       # - name: Run migrations 
       #   env:
       #     NODE_ENV: production
