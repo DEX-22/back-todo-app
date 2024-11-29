@@ -14,7 +14,11 @@ module.exports = {
         dialect: 'postgres'
     },
     production:{
-        url: connectionString,
+        username: config.dbUser,
+        password: config.dbPassword,
+        database: config.dbName,
+        host: config.dbHost, 
+        port: config.dbPort  ,
         dialect: 'postgres'
     }
 }
