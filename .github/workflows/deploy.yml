@@ -1,0 +1,35 @@
+name: Deploy to Vercel and run migrations
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run migrations
+        env:
+          NODE_ENV: production
+        run: npm run migrations:run
+
+      - name: Deploy to Vercel
+        run: npx vercel deploy --prod
+
+      - name: Run migrations
+        env:
+          NODE_ENV: production
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+        run: npx sequelize-cli db:migrate
+
