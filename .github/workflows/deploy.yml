@@ -12,12 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Install pnpm global
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: npm install --production
-
-      - name: Install pg package
-        run: npm install -g pg
+        run: pnpm install --production
 
       # - name: Run migrations 
       #   env:
