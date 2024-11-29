@@ -4,7 +4,7 @@ const { createUserSchema } = require('../schemas/user.schema.js')
 const { LoginSchema } = require('../schemas/auth.schema.js')
 const UserService = require("../services/user.service.js")
 const jwt = require("jsonwebtoken")
-const config = require("../../config/config.js")
+const config = require("../config/config.js")
 
 const passport = require("passport")
 const router = express.Router()
