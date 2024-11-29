@@ -29,19 +29,19 @@ router.post("/",
             next(error)
         }
     })
-router.get("/:id",
-    validateRequest(getTaskSchema, properties.params),
-    async (req, res, next) => {
-        try {
-            const id = req.params.id
-            const data = await service.findOne(id)
+// router.get("/:id",
+//     validateRequest(getTaskSchema, properties.params),
+//     async (req, res, next) => {
+//         try {
+//             const id = req.params.id
+//             const data = await service.findOne(id)
 
-            res.json(data)
+//             res.json(data)
 
-        } catch (error) {
-            next(error)
-        }
-    })
+//         } catch (error) {
+//             next(error)
+//         }
+//     })
 router.patch("/:id",
     validateRequest(getTaskSchema, properties.params),
     validateRequest(updateTaskSchema, properties.body),
