@@ -1,12 +1,24 @@
 const {Sequelize} = require('sequelize')
-const config = require('../config/config.js')
 
-const USER = encodeURIComponent(config.dbUser)
-const PASSWORD = encodeURIComponent(config.dbPassword)
+require('dotenv').config()
+
+const config = {
+    env: process.env.NODE_ENV || 'dev',
+    port: process.env.PORT || 3000,
+    dbHost: process.env.DB_HOST,
+    dbUser: process.env.DB_USER,
+    dbPassword: process.env.DB_PASSWORD,
+    dbName: process.env.DB_NAME,
+    dbPort: process.env.DB_PORT,
+    jwtSecret: process.env.JWT_SECRET,
+    connectionString: process.env.DB_CONNECTION_STRING
+}
+
+
+// const USER = encodeURIComponent(config.dbUser)
+// const PASSWORD = encodeURIComponent(config.dbPassword)
 const connectionString = `postgres://${config.dbUser}:${config.dbPassword}@${config.dbHost}:${config.dbPort}/${config.dbName}`
-
-const sqlize = new Sequelize(connectionString,{dialect:'postgres'})
-
+ 
 
 module.exports = {
     development:{
