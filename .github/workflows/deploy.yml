@@ -21,7 +21,8 @@ jobs:
 
       - name: exists secret
         run: echo $hola
-        env: hola: ${{secrets.JWT_SECRET}}
+        env: 
+          hola: ${{secrets.JWT_SECRET}}
 
       # - name: Run migrations 
       #   env:
