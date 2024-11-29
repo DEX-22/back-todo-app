@@ -49,9 +49,9 @@ router.get("/",
         async (req, res, next) => {
             try { 
     
-                const newTask = await service.findByEmail("segundo@dev.io")
+                // const newTask = await service.findByEmail("segundo@dev.io")
     
-                res.json(newTask)
+                res.json("newTask")
             } catch (error) {
                 next(error)
             }
