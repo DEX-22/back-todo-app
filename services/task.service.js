@@ -1,5 +1,5 @@
 
-const { models } = require("../api/libs/sequelize.lib.js.js")
+const { models } = require("../libs/sequelize.lib.js")
 
 const boom = require("@hapi/boom")
 
