@@ -16,7 +16,7 @@ router.post("/login",
     passport.authenticate('local',{session:false}),
     async (req, res, next) => {
         try {  
-            const secret = config.jwtSecret
+            const secret = config.jwtSecret ?? "test"
             const user = req.user
             const payload = {sub: user.id }
 
