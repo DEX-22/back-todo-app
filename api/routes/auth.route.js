@@ -1,8 +1,8 @@
 const express = require('express')
 const { validateRequest, properties } = require('../middlewares/index.middleware.js')
-const { createUserSchema } = require('../../schemas/user.schema.js')
-const { LoginSchema } = require('../../schemas/auth.schema.js')
-const UserService = require("../../services/user.service.js")
+const { createUserSchema } = require('../schemas/user.schema.js')
+const { LoginSchema } = require('../schemas/auth.schema.js')
+const UserService = require("../services/user.service.js")
 const jwt = require("jsonwebtoken")
 const config = require("../../config/config.js")
 
