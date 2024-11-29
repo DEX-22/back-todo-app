@@ -8,7 +8,7 @@ const router = express.Router()
   
 
 module.exports = function(app){
-    // app.get("/",(req,res)=>{res.send("WELCOME")})
+    app.get("/api/",(req,res)=>{res.send("WELCOME")})
 
     // router.use("/tasks",
     //     passport.authenticate('jwt',{session:false})
