@@ -30,8 +30,7 @@ jobs:
           echo "DB_HOST: $DB_HOST"
         
         
-      - name: Run migrations
-        if: ${{secrets.DB_USER != ""}}
+      - name: Run migrations 
         env:
           NODE_ENV: production
           DB_HOST: ${{ secrets.DB_HOST }}
