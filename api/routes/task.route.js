@@ -2,6 +2,8 @@ const express = require('express')
 const { validateRequest, properties } = require('../middlewares/index.middleware.js')
 const { createTaskSchema, updateTaskSchema, getTaskSchema } = require('../../schemas/task.schema.js')
 const router = express.Router()
+const passport = require('passport')
+
 
 const TaskService = require("../../services/task.service.js")
 const service = new TaskService()
