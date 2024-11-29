@@ -11,6 +11,14 @@ const LoginSchema = joi.object({
     email : email.required(),
     password: password.required()
 })
+
+const RegisterSchema = joi.object({ 
+    name: name.required(),
+    lastName: lastName.required(),
+    email : email.required(),
+    password: password.required()
+})
+  
   
 
-module.exports = {LoginSchema}
+module.exports = {LoginSchema,RegisterSchema}

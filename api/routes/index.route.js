@@ -6,7 +6,7 @@ const router = express.Router()
   
 
 module.exports = function(app){
-    app.get("/api/",(req,res)=>{res.send("WELCOME")})
+    app.get("/api/healt",(req,res)=>{res.send("WELCOME")})
 
     router.use("/tasks" ,taskRoutes)
 

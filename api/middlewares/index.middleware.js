@@ -27,8 +27,7 @@ function catchError(err,req,res,next){
     
 }
 
-function boomErrorHandler(err,req,res,next){
-    console.log(err.isBoom)
+function boomErrorHandler(err,req,res,next){ 
     if(err.isBoom){
         const {output} = err
         res

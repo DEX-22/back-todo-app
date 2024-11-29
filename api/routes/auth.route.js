@@ -30,32 +30,21 @@ router.post("/login",
     })
 
 
-// router.post("/register",
-//     validateRequest(createUserSchema, properties.body),
-//     async (req, res, next) => {
-//         try {
-//             const body = req.body
+router.post("/register",
+    validateRequest(createUserSchema, properties.body),
+    async (req, res, next) => {
+        try {
+            const body = req.body
 
-//             const newTask = await service.create(body)
+            const newTask = await service.create(body)
 
-//             res.json(newTask)
-//         } catch (error) {
-//             next(error)
-//         }
-//     }) 
+            res.json(newTask)
+        } catch (error) {
+            next(error)
+        }
+    }) 
 
- 
-router.get("/", 
-        async (req, res, next) => {
-            try { 
-    
-                // const newTask = await service.findByEmail("segundo@dev.io")
-    
-                res.json("newTask")
-            } catch (error) {
-                next(error)
-            }
-        }) 
+  
     
 
 

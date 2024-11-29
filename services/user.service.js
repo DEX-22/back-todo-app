@@ -5,14 +5,18 @@ const bcrypt = require("bcrypt")
 class UserService {
 
     async create(data) { 
-        const saltOrRounds = 10
-        const password = await bcrypt.hash(data.password,saltOrRounds)
-        const newUser = await models.User.create({...data,password})
-        
-        delete newUser.dataValues.password
-        delete newUser.dataValues.id
+        try{
+            const saltOrRounds = 10
+            const password = await bcrypt.hash(data.password,saltOrRounds)
+            const newUser = await models.User.create({...data,password})
+            
+            delete newUser.dataValues.password
+            delete newUser.dataValues.id
 
-        return newUser
+            return newUser
+        }catch(e){
+            throw boom.conflict(e)
+        }
     }
  
     async findByEmail(email) {
