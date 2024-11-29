@@ -1,6 +1,5 @@
 const boom = require('@hapi/boom')
-const { ValidationError } = require('sequelize')
-
+const { ValidationError } = require('sequelize') 
 
 function validateRequest(schema,property){
 
@@ -29,6 +28,7 @@ function catchError(err,req,res,next){
 }
 
 function boomErrorHandler(err,req,res,next){
+    console.log(err.isBoom)
     if(err.isBoom){
         const {output} = err
         res
@@ -53,9 +53,11 @@ function ormErrorHandler(err,req,res,next){
             errors: err.errors
         })
 
+    }else{
+        next(err)
+
     }
 
-    next(err)
 
 }
 
@@ -68,10 +70,10 @@ module.exports = {
     },
     validateRequest,
   
-    buildMiddlewares: function(app){
-    app.use(catchError)
-    app.use(ormErrorHandler)
-    app.use(boomErrorHandler)
-    app.use(errorHandler)
+    buildMiddlewares: function(app){  
+        app.use(catchError)
+        app.use(ormErrorHandler)
+        app.use(boomErrorHandler)
+        app.use(errorHandler)
     
 }}
