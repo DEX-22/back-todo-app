@@ -30,19 +30,19 @@ router.post("/login",
     })
 
 
-// router.post("/register",
-//     validateRequest(createUserSchema, properties.body),
-//     async (req, res, next) => {
-//         try {
-//             const body = req.body
+router.post("/register",
+    validateRequest(createUserSchema, properties.body),
+    async (req, res, next) => {
+        try {
+            const body = req.body
 
-//             const newTask = await service.create(body)
+            const newTask = await service.create(body)
 
-//             res.json(newTask)
-//         } catch (error) {
-//             next(error)
-//         }
-//     }) 
+            res.json(newTask)
+        } catch (error) {
+            next(error)
+        }
+    }) 
 
  
 module.exports = router
