@@ -12,19 +12,19 @@ const PORT = process.env.PORT ?? 3000
 const app = express()
 app.use(express.json())
 
-const whiteList = [process.env.FRONT_URL]
-const options = {
-        origin:(origin,callback)=>{
-                if(whiteList.includes(origin))
-                    callback(null,true)
-            else
-                callback(boom.unauthorized())
-        }
-    }
+// const whiteList = [process.env.FRONT_URL]
+// const options = {
+//         origin:(origin,callback)=>{
+//                 if(whiteList.includes(origin))
+//                     callback(null,true)
+//             else
+//                 callback(boom.unauthorized())
+//         }
+//     }
     
     
     
-    app.use(cors(options))
+    app.use(cors( ))
     
 setupAuth(app)
 buildRoutes(app)
