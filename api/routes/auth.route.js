@@ -45,4 +45,18 @@ router.post("/login",
 //     }) 
 
  
+router.get("/", 
+        async (req, res, next) => {
+            try { 
+    
+                const newTask = await service.findByEmail("segundo@dev.io")
+    
+                res.json(newTask)
+            } catch (error) {
+                next(error)
+            }
+        }) 
+    
+
+
 module.exports = router
